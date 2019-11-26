@@ -1,0 +1,35 @@
+@isTest
+public class TestVerifyDate {
+        
+    @isTest static void testCheckDates (){
+        
+        testDateWithin30Days();
+        
+        testSetEndOfMonthDate();    
+                 
+             
+    }
+    
+ 	private static void testDateWithin30Days() {
+    	Date date1 = Date.newInstance(2019, 11, 01);
+    	Date date2 = Date.newInstance(2019, 11, 15);
+        
+        Date res = VerifyDate.CheckDates(date1, date2);
+        System.debug('testDateWithin30Days: ' + res);
+        System.assertEquals(date2, res); //the result is date2 because date is with in 30days of date1
+        
+	}
+
+ 	private static void testSetEndOfMonthDate() {
+    	Date date1 = Date.newInstance(2019, 10, 01);
+    	Date date2 = Date.newInstance(2019, 11, 15);	
+        
+		Date res = VerifyDate.CheckDates(date1, date2);
+        System.debug('testSetEndOfMonthDate: ' + res);
+        System.assertEquals(Date.newInstance(2019, 10, 31), res);// the result is the end of October set 
+	}
+    
+
+        
+    
+}
